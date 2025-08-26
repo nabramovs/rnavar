@@ -3,9 +3,12 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## dev
+## [1.2.0](https://github.com/nf-core/rnavar/releases/tag/1.2.0) - Black Bebop
 
 ### Added
+
+- [#224](https://github.com/nf-core/rnavar/pull/224) - Annotation is now possible with bcftools annotate (--tools bcfann)
+- [#225](https://github.com/nf-core/rnavar/pull/225) - Add Seq2HLA to enable Class I & Class II HLATyping
 
 ### Changed
 
@@ -36,6 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [#224](https://github.com/nf-core/rnavar/pull/224) - Back to dev
 - [#224](https://github.com/nf-core/rnavar/pull/224) - Minor refactor of prepare_genome subworkflow to handle similarly all reference vcf files
+- [#227](https://github.com/nf-core/rnavar/pull/227) - Prepare release 1.2.0
 
 #### Fixed
 
@@ -47,11 +51,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [#225](https://github.com/nf-core/sarek/pull/225) - Add Seq2HLA to enable Class I & Class II HLATyping
-
 ### Changed
 
 - [#216](https://github.com/nf-core/rnavar/pull/216) - Move non-informative information in the CHANGELOG for the end user to its own Developer section
+- [#227](https://github.com/nf-core/rnavar/pull/227) - Update docs for `bcfann`
 
 ### Fixed
 
@@ -78,6 +81,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Changed
 
+- [#203](https://github.com/nf-core/rnavar/pull/203) - Back to dev
 - [#209](https://github.com/nf-core/rnavar/pull/209) - Template update for nf-core/tools v3.3.1
 - [#213](https://github.com/nf-core/rnavar/pull/213) - Update all modules
 - [#215](https://github.com/nf-core/rnavar/pull/215) - Template update for nf-core/tools v3.3.2
