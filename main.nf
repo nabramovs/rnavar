@@ -14,16 +14,24 @@
     GENOME PARAMETER VALUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
-params.fasta             = getGenomeAttribute('fasta')
-params.fasta_fai         = getGenomeAttribute('fasta_fai')
-params.exon_bed          = getGenomeAttribute('exon_bed')
-params.gtf               = getGenomeAttribute('gtf')
-params.gff               = getGenomeAttribute('gff')
-params.star_index        = getGenomeAttribute('star')
-params.snpeff_db         = getGenomeAttribute('snpeff_db')
-params.vep_cache_version = getGenomeAttribute('vep_cache_version')
-params.vep_genome        = getGenomeAttribute('vep_genome')
-params.vep_species       = getGenomeAttribute('vep_species')
+
+params.bcftools_annotations     = getGenomeAttribute('bcftools_annotations')
+params.bcftools_annotations_tbi = getGenomeAttribute('bcftools_annotations_tbi')
+params.dbsnp                    = getGenomeAttribute('dbsnp')
+params.dbsnp_tbi                = getGenomeAttribute('dbsnp_tbi')
+params.dict                     = getGenomeAttribute('dict')
+params.exon_bed                 = getGenomeAttribute('exon_bed')
+params.fasta                    = getGenomeAttribute('fasta')
+params.fasta_fai                = getGenomeAttribute('fasta_fai')
+params.gff                      = getGenomeAttribute('gff')
+params.gtf                      = getGenomeAttribute('gtf')
+params.known_indels             = getGenomeAttribute('known_indels')
+params.known_indels_tbi         = getGenomeAttribute('known_indels_tbi')
+params.snpeff_db                = getGenomeAttribute('snpeff_db')
+params.star_index               = getGenomeAttribute('star')
+params.vep_cache_version        = getGenomeAttribute('vep_cache_version')
+params.vep_genome               = getGenomeAttribute('vep_genome')
+params.vep_species              = getGenomeAttribute('vep_species')
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -78,7 +86,7 @@ workflow NFCORE_RNAVAR {
     }
 
     if (!params.skip_baserecalibration && !params.dbsnp && !params.known_indels) {
-        error("Known sites are required for performing base recalibration. Supply them with either --dbsnp and/or --known_sites or disable base recalibration with --skip_baserecalibration")
+        error("Known sites are required for performing base recalibration. Supply them with either --dbsnp and/or --known_indels or disable base recalibration with --skip_baserecalibration")
     }
 
     // Initialize file channels based on params
@@ -120,19 +128,6 @@ workflow NFCORE_RNAVAR {
         align,
     )
 
-    ch_fasta = PREPARE_GENOME.out.fasta
-    ch_dict = PREPARE_GENOME.out.dict
-    ch_fasta_fai = PREPARE_GENOME.out.fasta_fai
-    ch_gtf = PREPARE_GENOME.out.gtf
-    ch_exon_bed = PREPARE_GENOME.out.exon_bed
-    ch_star_index = PREPARE_GENOME.out.star_index
-    ch_bcfann = PREPARE_GENOME.out.bcfann
-    ch_bcfann_tbi = PREPARE_GENOME.out.bcfann_tbi
-    ch_dbsnp = PREPARE_GENOME.out.dbsnp
-    ch_dbsnp_tbi = PREPARE_GENOME.out.dbsnp_tbi
-    ch_known_indels = PREPARE_GENOME.out.known_indels
-    ch_known_indels_tbi = PREPARE_GENOME.out.known_indels_tbi
-
     versions = versions.mix(PREPARE_GENOME.out.versions)
 
     // Download cache
@@ -170,19 +165,19 @@ workflow NFCORE_RNAVAR {
     //
     RNAVAR(
         samplesheet,
-        ch_bcfann,
-        ch_bcfann_tbi,
+        PREPARE_GENOME.out.bcfann,
+        PREPARE_GENOME.out.bcfann_tbi,
         ch_bcftools_header_lines,
-        ch_dbsnp,
-        ch_dbsnp_tbi,
-        ch_dict,
-        ch_exon_bed,
-        ch_fasta,
-        ch_fasta_fai,
-        ch_gtf,
-        ch_known_indels,
-        ch_known_indels_tbi,
-        ch_star_index,
+        PREPARE_GENOME.out.dbsnp,
+        PREPARE_GENOME.out.dbsnp_tbi,
+        PREPARE_GENOME.out.dict,
+        PREPARE_GENOME.out.exon_bed,
+        PREPARE_GENOME.out.fasta,
+        PREPARE_GENOME.out.fasta_fai,
+        PREPARE_GENOME.out.gtf,
+        PREPARE_GENOME.out.known_indels,
+        PREPARE_GENOME.out.known_indels_tbi,
+        PREPARE_GENOME.out.star_index,
         snpeff_cache,
         params.snpeff_db,
         params.vep_genome,
