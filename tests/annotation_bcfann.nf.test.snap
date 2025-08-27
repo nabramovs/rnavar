@@ -47,7 +47,6 @@
                 "reports/multiqc_report.html"
             ],
             [
-                "llms-full.txt:md5,b599c9621bdc7988e12d1e1880229fad",
                 "multiqc_citations.txt:md5,4c806e63a283ec1b7e78cdae3a923d4f"
             ],
             "No BAM files",
