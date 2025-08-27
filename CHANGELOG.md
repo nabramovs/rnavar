@@ -3,6 +3,57 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0](https://github.com/nf-core/rnavar/releases/tag/1.2.0) - Black Bebop
+
+### Added
+
+- [#224](https://github.com/nf-core/rnavar/pull/224) - Annotation is now possible with bcftools annotate (--tools bcfann)
+- [#225](https://github.com/nf-core/rnavar/pull/225) - Add Seq2HLA to enable Class I & Class II HLATyping
+- [#227](https://github.com/nf-core/rnavar/pull/227) - Update docs for `bcfann`
+
+### Changed
+
+- [#224](https://github.com/nf-core/rnavar/pull/224) - Update ensemblvep modules to 114.2
+- [#224](https://github.com/nf-core/rnavar/pull/224) - Update ensemblvep cache version to 114
+
+### Fixed
+
+- [#224](https://github.com/nf-core/rnavar/pull/224) - bcfann is now a valid tool to annotate vcf files with (BCFTOOLS_ANNOTATE)
+
+### Dependencies
+
+| Dependency | Old version | New version |
+| ---------- | ----------- | ----------- |
+| ensemblvep | 113.0       | 114.2       |
+| seq2hla    |             | 2.3         |
+
+### Parameter
+
+| Old name                  | New name |
+| ------------------------- | -------- |
+| use_annotation_cache_keys |          |
+
+### Developer section
+
+#### Added
+
+#### Changed
+
+- [#224](https://github.com/nf-core/rnavar/pull/224) - Back to dev
+- [#224](https://github.com/nf-core/rnavar/pull/224) - Minor refactor of prepare_genome subworkflow to handle similarly all reference vcf files
+- [#227](https://github.com/nf-core/rnavar/pull/227) - Prepare release 1.2.0
+
+#### Fixed
+
+- [#227](https://github.com/nf-core/rnavar/pull/227), [#229](https://github.com/nf-core/rnavar/pull/229) - Minor CHANGELOG fixes
+- [#229](https://github.com/nf-core/rnavar/pull/229) - Add skip_baserecalibration to test_full.config since no dbsnp or known_indels are provided
+- [#229](https://github.com/nf-core/rnavar/pull/229) - Fix typo for remove_unknown_regions modules folder
+- [#229](https://github.com/nf-core/rnavar/pull/229) - Fix schema for max_intron_size parameter
+
+#### Removed
+
+- [#224](https://github.com/nf-core/rnavar/pull/224) - Remove unused parameter `use_annotation_cache_keys`
+
 ## [1.1.1](https://github.com/nf-core/rnavar/releases/tag/1.1.1) - Brave Benatar
 
 ### Added
@@ -35,6 +86,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Changed
 
+- [#203](https://github.com/nf-core/rnavar/pull/203) - Back to dev
 - [#209](https://github.com/nf-core/rnavar/pull/209) - Template update for nf-core/tools v3.3.1
 - [#213](https://github.com/nf-core/rnavar/pull/213) - Update all modules
 - [#215](https://github.com/nf-core/rnavar/pull/215) - Template update for nf-core/tools v3.3.2

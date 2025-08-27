@@ -3,5 +3,6 @@
 channels:
   - conda-forge
   - bioconda
+  - defaults
 dependencies:
-  - bioconda::bcftools=1.21
+  - bioconda::seq2hla=2.3

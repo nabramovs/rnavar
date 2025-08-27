@@ -24,7 +24,7 @@ GM12878,/data/GM12878/SRR5665260_1.fastq.gz,/data/GM12878/SRR5665260_2.fastq.gz
 The pipeline has been executed with the following command:
 
 ```console
-nextflow run nf-core/rnavar -profile <institutional_config>,docker --input samplesheet.csv --genome GRCh38 --annotate_tools merge --outdir results
+nextflow run nf-core/rnavar -profile <institutional_config>,docker --input samplesheet.csv --genome GRCh38 --tools merge --outdir results
 ```
 
 The `<institutional_config>` used in this experiment can be found [here](https://github.com/nf-core/configs/blob/master/conf/pipeline/rnavar/munin.config). However, you can create your own institutional config and place it on [nf-core/configs](https://github.com/nf-core/configs/tree/master/conf/pipeline/rnavar) and then use the config name directly in the command instead of `<institutional_config>` to use your own data and parameters.
@@ -50,11 +50,13 @@ The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes d
     - [Base (Quality Score) Recalibration](#base-quality-score-recalibration)
       - [GATK BaseRecalibrator](#gatk-baserecalibrator)
       - [GATK ApplyBQSR](#gatk-applybqsr)
+  - [HLA typing](#hla-typing)
   - [Variant calling](#variant-calling)
   - [Variant filtering](#variant-filtering)
   - [Variant annotation](#variant-annotation)
     - [snpEff](#snpeff)
     - [VEP](#vep)
+    - [BCFtools annotate](#bcftools-annotate)
   - [QC and Reporting](#qc-and-reporting)
     - [QC](#qc)
       - [FastQC](#fastqc)
@@ -169,6 +171,32 @@ Currently, the pipeline does not produce the recalibration table file in the out
 
 </details>
 
+## HLA typing
+
+[seq2HLA](https://github.com/TRON-Bioinformatics/seq2HLA) performs precision HLA typing and expression analysis from RNA-seq data. The tool uses Bowtie2 alignment to map reads to HLA reference sequences and determines HLA genotypes at both 2-digit and 4-digit resolution for both classical and non-classical HLA Class I alleles, as well as Class II alleles.
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `seq2hla/[SAMPLE]/`
+  - `[SAMPLE]-ClassI-class.HLAgenotype2digits`: HLA Class I 2-digit genotype results for classical alleles
+  - `[SAMPLE]-ClassI-class.HLAgenotype4digits`: HLA Class I 4-digit genotype results for classical alleles
+  - `[SAMPLE]-ClassI-class.expression`: Expression levels of HLA Class I classical alleles
+  - `[SAMPLE]-ClassI-class.bowtielog`: Bowtie2 alignment log for HLA Class I classical alleles
+  - `[SAMPLE]-ClassI-nonclass.HLAgenotype2digits`: HLA Class I 2-digit genotype results for non-classical alleles
+  - `[SAMPLE]-ClassI-nonclass.HLAgenotype4digits`: HLA Class I 4-digit genotype results for non-classical alleles
+  - `[SAMPLE]-ClassI-nonclass.expression`: Expression levels of HLA Class I non-classical alleles
+  - `[SAMPLE]-ClassI-nonclass.bowtielog`: Bowtie2 alignment log for HLA Class I non-classical alleles
+  - `[SAMPLE]-ClassII.HLAgenotype2digits`: HLA Class II 2-digit genotype results
+  - `[SAMPLE]-ClassII.HLAgenotype4digits`: HLA Class II 4-digit genotype results
+  - `[SAMPLE]-ClassII.expression`: Expression levels of HLA Class II alleles
+  - `[SAMPLE]-ClassII.bowtielog`: Bowtie2 alignment log for HLA Class II alleles
+  - `[SAMPLE].ambiguity`: Reports typing ambiguities when more than one solution for an allele is possible (optional)
+
+</details>
+
+HLA typing is performed when the parameter `--tools seq2hla` is set. The 2-digit resolution provides broad HLA type classification, while 4-digit resolution offers more precise allele-level typing. Expression files contain quantitative information about HLA allele expression levels derived from the RNA-seq data.
+
 ## Variant calling
 
 [GATK HaplotypeCaller](https://gatk.broadinstitute.org/hc/en-us/articles/4414586765723-HaplotypeCaller) is used to call SNVs and small indels in the sample. The `Recalibrated BAM` file is used as an input to this process and the output file is produced in VCF format.
@@ -197,7 +225,7 @@ Currently, the pipeline does not produce the recalibration table file in the out
 
 ## Variant annotation
 
-This directory contains results from the final annotation steps: two tools are used for annotation, [snpEff](http://snpeff.sourceforge.net/) and [VEP](https://www.ensembl.org/info/docs/tools/vep/index.html).
+This directory contains results from the final annotation steps: three tools are used for annotation, [BCFtools Annotate](https://samtools.github.io/bcftools/bcftools.html), [snpEff](http://snpeff.sourceforge.net/) and [VEP](https://www.ensembl.org/info/docs/tools/vep/index.html).
 
 ### snpEff
 
@@ -205,7 +233,7 @@ This directory contains results from the final annotation steps: two tools are u
 It annotates and predicts the effects of variants on genes (such as amino acid changes) using multiple databases for annotations.
 The generated `VCF` header contains the software version and the used command line.
 
-To annotate variants using `snpeff`, you can use `--annotate_tools snpeff` or `--annotate_tools merge`.
+To annotate variants using `snpeff`, you can use `--tools snpeff` or `--tools merge`.
 The annotated variant files in VCF format can be found in `results/variant_annotation` folder.
 
 ![MultiQC - snpEff variant by region](images/snpeff_variants_by_region.png)
@@ -243,7 +271,7 @@ Currently, it contains:
 - `Protein_position`: Relative position of amino acid in protein
 - `BIOTYPE`: Biotype of transcript or regulatory feature
 
-To annotate variants using `vep`, you can use `--annotate_tools vep`.
+To annotate variants using `vep`, you can use `--tools vep`.
 The annotated variant files in VCF format can be found in `results/variant_annotation` folder.
 
 ![MultiQC - VEP general statistics](images/vep_general_stats.png)
@@ -259,7 +287,7 @@ The annotated variant files in VCF format can be found in `results/variant_annot
 
 </details>
 
-When `--annotate_tools merge` option is used, the annotation from both `snpeff` and `vep` are combined into a single VCF file which can be found with the following naming convention.
+When `--tools merge` option is used, the annotation from both `snpeff` and `vep` are combined into a single VCF file which can be found with the following naming convention.
 
 <details markdown="1">
 <summary>Output files</summary>
@@ -271,6 +299,18 @@ When `--annotate_tools merge` option is used, the annotation from both `snpeff` 
 </details>
 
 For further reading and documentation see the [VEP manual](https://www.ensembl.org/info/docs/tools/vep/index.html)
+
+### BCFtools annotate
+
+[BCFtools annotate](https://samtools.github.io/bcftools/bcftools.html#annotate) is used to add annotations to VCF files. The annotations are added to the INFO column of the VCF file. The annotations are added to the VCF header and the VCF header is updated with the new annotations. For further reading and documentation see the [BCFtools annotate manual](https://samtools.github.io/bcftools/bcftools.html#annotate).
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `sample._BCF.ann.vcf.gz` and `sample._BCF.ann.vcf.gz.tbi`
+  - VCF with tabix index
+
+</details>
 
 ## QC and Reporting
 

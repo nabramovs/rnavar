@@ -3,14 +3,13 @@ nextflow_pipeline {
     name "Test pipeline"
     script "../main.nf"
     tag "pipeline"
-    tag "pipeline_rnavar"
 
-    test("-profile test --input bam.csv") {
+    test("-profile test --run_hlatyping") {
 
         when {
             params {
                 outdir = "$outputDir"
-                input = "${projectDir}/tests/csv/1.0/bam.csv"
+                tools = 'seq2hla'
             }
         }
 
