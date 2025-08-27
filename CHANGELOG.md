@@ -3,6 +3,36 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## dev
+
+### Added
+
+### Changed
+
+### Fixed
+
+### Dependencies
+
+| Dependency | Old version | New version |
+| ---------- | ----------- | ----------- |
+
+### Parameter
+
+| Old name | New name |
+| -------- | -------- |
+
+### Developer section
+
+#### Added
+
+#### Changed
+
+- [#231](https://github.com/nf-core/rnavar/pull/231) - Back to dev
+
+#### Fixed
+
+#### Removed
+
 ## [1.2.0](https://github.com/nf-core/rnavar/releases/tag/1.2.0) - Black Bebop
 
 ### Added
