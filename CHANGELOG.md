@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [#231](https://github.com/nf-core/rnavar/pull/231) - Back to dev
 - [#232](https://github.com/nf-core/rnavar/pull/232) - Update all modules
+- [#232](https://github.com/nf-core/rnavar/pull/232) - Simplify modules config file
 
 #### Fixed
 
