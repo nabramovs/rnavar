@@ -86,6 +86,7 @@
                 "reports",
                 "reports/multiqc_data",
                 "reports/multiqc_data/BETA-multiqc.parquet",
+                "reports/multiqc_data/llms-full.txt",
                 "reports/multiqc_data/multiqc.log",
                 "reports/multiqc_data/multiqc_citations.txt",
                 "reports/multiqc_data/multiqc_data.json",
@@ -162,6 +163,7 @@
                 "variant_calling/GM12878/GM12878.haplotypecaller.vcf.gz.tbi"
             ],
             [
+                "llms-full.txt:md5,72c959b825da1847920275b26efe0ebc",
                 "multiqc_citations.txt:md5,ca2184e168cc68367f244272041e555a",
                 "multiqc_picard_dups.txt:md5,3c2ee70029b964a56b5eb0b2473eb147",
                 "multiqc_samtools_idxstats.txt:md5,776a2525b1f9482ef584682efe5241c1",
@@ -190,6 +192,6 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.6"
         },
-        "timestamp": "2025-07-07T18:59:34.378925286"
+        "timestamp": "2025-08-27T12:26:53.431922808"
     }
 }

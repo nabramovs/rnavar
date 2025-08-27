@@ -70,6 +70,7 @@
                 "reports/multiqc_data/gatk-base-recalibrator-quality-scores-plot_Pre-recalibration_Percent.txt",
                 "reports/multiqc_data/gatk-base-recalibrator-reported-empirical-plot.txt",
                 "reports/multiqc_data/gatk_base_recalibrator.txt",
+                "reports/multiqc_data/llms-full.txt",
                 "reports/multiqc_data/multiqc.log",
                 "reports/multiqc_data/multiqc_citations.txt",
                 "reports/multiqc_data/multiqc_data.json",
@@ -102,6 +103,7 @@
             [
                 "gatk-base-recalibrator-quality-scores-plot_Pre-recalibration_Count.txt:md5,77e60eace538af06a2be9d4c638d5ca3",
                 "gatk-base-recalibrator-quality-scores-plot_Pre-recalibration_Percent.txt:md5,07c492fdffde558c4ffbfd9eb9d5efec",
+                "llms-full.txt:md5,23e9f0e78fedfa76b47127ef91f62f0c",
                 "multiqc_citations.txt:md5,3815a9f79e41890653a0e0d602c92ac9"
             ],
             "No BAM files",
@@ -113,8 +115,8 @@
         ],
         "meta": {
             "nf-test": "0.9.2",
-            "nextflow": "25.07.0"
+            "nextflow": "25.04.6"
         },
-        "timestamp": "2025-08-25T16:33:15.182681379"
+        "timestamp": "2025-08-27T12:01:57.048652089"
     }
 }

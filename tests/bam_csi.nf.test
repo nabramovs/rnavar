@@ -9,8 +9,8 @@ nextflow_pipeline {
 
         when {
             params {
-                outdir = "$outputDir"
                 bam_csi_index = true
+                outdir        = "$outputDir"
             }
         }
 

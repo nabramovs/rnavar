@@ -9,8 +9,8 @@ nextflow_pipeline {
 
         when {
             params {
+                input  = "${projectDir}/tests/csv/1.0/cram.csv"
                 outdir = "$outputDir"
-                input = "${projectDir}/tests/csv/1.0/cram.csv"
             }
         }
 
