@@ -9,9 +9,9 @@ nextflow_pipeline {
 
         when {
             params {
-                input = "${projectDir}/tests/csv/1.0/fastq_single_end.csv"
-                outdir = "$outputDir"
-                extract_umi = true
+                extract_umi         = true
+                input               = "${projectDir}/tests/csv/1.0/fastq_single_end.csv"
+                outdir              = "$outputDir"
                 umitools_bc_pattern = "NNNXC"
             }
         }
