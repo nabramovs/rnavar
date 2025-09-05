@@ -3,7 +3,7 @@
         "content": [
             {
                 "ENSEMBLVEP_VEP": {
-                    "ensemblvep": 114.2,
+                    "ensemblvep": 115.0,
                     "tabix": 1.21
                 },
                 "GATK4_BEDTOINTERVALLIST": {
@@ -133,7 +133,7 @@
         "content": [
             {
                 "ENSEMBLVEP_VEP": {
-                    "ensemblvep": 114.2,
+                    "ensemblvep": 115.0,
                     "tabix": 1.21
                 },
                 "GATK4_BEDTOINTERVALLIST": {
