@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- [#235](https://github.com/nf-core/rnavar/pull/235) - Update ensemblvep to 115.0
+- [#237](https://github.com/nf-core/rnavar/pull/237) - Update ensemblvep to 115.1
+
 ### Fixed
 
 ### Dependencies
@@ -16,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 | Dependency | Old version | New version |
 | ---------- | ----------- | ----------- |
 | multiqc    | 1.29        | 1.30        |
-| ensemblvep | 114.2       | 115         |
+| ensemblvep | 114.2       | 115.1       |
 
 ### Parameter
 
