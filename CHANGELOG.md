@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- [#238](https://github.com/nf-core/rnavar/pull/238) - Fix issue with dbsnp and known_indels params that were both necessary while they should optional
+
 ### Dependencies
 
 | Dependency | Old version | New version |
