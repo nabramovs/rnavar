@@ -253,15 +253,15 @@ workflow PREPARE_GENOME {
     emit:
     bcfann           = ch_bcftools_annotations // path: bcftools_annotations.vcf.gz
     bcfann_tbi       = ch_bcftools_annotations_tbi // path: bcftools_annotations.vcf.gz.tbi
-    dbsnp            = ch_dbsnp // Channel: [meta, dbsnp.vcf.gz]
-    dbsnp_tbi        = ch_dbsnp_tbi // Channel: [meta, dbsnp.vcf.gz.tbi]
+    dbsnp            = ch_dbsnp.collect() // Channel: [meta, dbsnp.vcf.gz]
+    dbsnp_tbi        = ch_dbsnp_tbi.collect() // Channel: [meta, dbsnp.vcf.gz.tbi]
     dict             = ch_dict // path: genome.fasta.dict
     exon_bed         = ch_exon_bed // path: exon.bed
     fasta            = ch_fasta // path: genome.fasta
     fasta_fai        = ch_fai // path: genome.fasta.fai
     gtf              = ch_gtf // path: genome.gtf
-    known_indels     = ch_known_indels // path: {known_indels*}.vcf.gz
-    known_indels_tbi = ch_known_indels_tbi // path: {known_indels*}.vcf.gz.tbi
+    known_indels     = ch_known_indels.collect() // path: {known_indels*}.vcf.gz
+    known_indels_tbi = ch_known_indels_tbi.collect() // path: {known_indels*}.vcf.gz.tbi
     known_sites      = ch_known_sites // path: {known_sites*}.vcf.gz
     known_sites_tbi  = ch_known_sites_tbi // path: {known_sites*}.vcf.gz.tbi
     star_index       = star_index_output // path: star/index/
