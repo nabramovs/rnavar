@@ -98,6 +98,7 @@
                 "reports/multiqc_data/gatk-base-recalibrator-quality-scores-plot_Pre-recalibration_Percent.txt",
                 "reports/multiqc_data/gatk-base-recalibrator-reported-empirical-plot.txt",
                 "reports/multiqc_data/gatk_base_recalibrator.txt",
+                "reports/multiqc_data/llms-full.txt",
                 "reports/multiqc_data/multiqc.log",
                 "reports/multiqc_data/multiqc_citations.txt",
                 "reports/multiqc_data/multiqc_data.json",
@@ -211,8 +212,8 @@
         ],
         "meta": {
             "nf-test": "0.9.2",
-            "nextflow": "25.07.0"
+            "nextflow": "25.04.6"
         },
-        "timestamp": "2025-08-25T16:56:03.014900425"
+        "timestamp": "2025-08-27T12:23:03.961034822"
     }
 }

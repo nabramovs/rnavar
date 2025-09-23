@@ -9,7 +9,7 @@ nextflow_pipeline {
 
         when {
             params {
-                outdir = "$outputDir"
+                outdir                 = "$outputDir"
                 skip_baserecalibration = true
             }
         }

@@ -3,6 +3,45 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.1](https://github.com/nf-core/rnavar/releases/tag/1.2.1) - Red Swordfish II
+
+### Added
+
+### Changed
+
+- [#235](https://github.com/nf-core/rnavar/pull/235) - Update ensemblvep to 115.0
+- [#237](https://github.com/nf-core/rnavar/pull/237) - Update ensemblvep to 115.1
+
+### Fixed
+
+- [#238](https://github.com/nf-core/rnavar/pull/238) - Fix issue with dbsnp and known_indels params that were both necessary while they should be optional
+
+### Dependencies
+
+| Dependency | Old version | New version |
+| ---------- | ----------- | ----------- |
+| multiqc    | 1.29        | 1.30        |
+| ensemblvep | 114.2       | 115.1       |
+
+### Parameter
+
+| Old name | New name |
+| -------- | -------- |
+
+### Developer section
+
+#### Added
+
+#### Changed
+
+- [#231](https://github.com/nf-core/rnavar/pull/231) - Back to dev
+- [#232](https://github.com/nf-core/rnavar/pull/232) - Update all modules
+- [#232](https://github.com/nf-core/rnavar/pull/232) - Simplify modules config file
+
+#### Fixed
+
+#### Removed
+
 ## [1.2.0](https://github.com/nf-core/rnavar/releases/tag/1.2.0) - Black Bebop
 
 ### Added

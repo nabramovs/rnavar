@@ -38,6 +38,7 @@
                 "reports",
                 "reports/multiqc_data",
                 "reports/multiqc_data/BETA-multiqc.parquet",
+                "reports/multiqc_data/llms-full.txt",
                 "reports/multiqc_data/multiqc.log",
                 "reports/multiqc_data/multiqc_citations.txt",
                 "reports/multiqc_data/multiqc_data.json",
@@ -58,6 +59,6 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.6"
         },
-        "timestamp": "2025-08-21T18:34:19.047450808"
+        "timestamp": "2025-08-27T11:49:05.784005388"
     }
 }

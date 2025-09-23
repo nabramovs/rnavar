@@ -9,7 +9,7 @@ nextflow_pipeline {
         when {
             params {
                 outdir = "$outputDir"
-                tools = 'seq2hla'
+                tools  = 'seq2hla'
             }
         }
 
